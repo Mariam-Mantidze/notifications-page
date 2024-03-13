@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import React from "react";
 
-export default function HeaderComponent() {
+export default function HeaderComponent({ unreadCount }) {
   return (
     <Header>
       <NotificationContainer>
         <h3>Notifications</h3>
-        <span>3</span>
+        <span>{unreadCount}</span>
       </NotificationContainer>
-      <p>Mark all as read</p>
+      <button
+        onClick={() => {
+          setCount(0);
+        }}>
+        Mark all as read
+      </button>
     </Header>
   );
 }
@@ -18,13 +23,16 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  & p {
+  & button {
     font-size: 14px;
     font-weight: 500;
     line-height: 18px;
     letter-spacing: 0px;
     text-align: right;
     color: rgba(94, 103, 120, 1);
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
   }
 `;
 

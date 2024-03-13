@@ -1,17 +1,26 @@
-// import { useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import styled from "styled-components";
 import HeaderComponent from "./components/HeaderComponent";
 import NotificationsList from "./components/NotificationsList";
+import data from "./data.json";
 
 function App() {
-  // const [count, setCount] = useState(0);
+  const [notifications, setNotifications] = useState(data.notifications);
+
+  const unreadCount = notifications.filter(
+    (notification) => notification.isUnread
+  ).length;
+  console.log(unreadCount);
 
   return (
     <>
       <Main>
-        <HeaderComponent />
-        <NotificationsList />
+        <HeaderComponent unreadCount={unreadCount} />
+        <NotificationsList
+          notifications={notifications}
+          setNotifications={setNotifications}
+        />
       </Main>
     </>
   );
