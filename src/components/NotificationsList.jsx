@@ -23,32 +23,39 @@ export default function NotificationsList({ notifications, setNotifications }) {
             isUnread={message.isUnread}>
             <div className="notifications-box">
               <img src={message.profilePic} alt="profile picture of a user" />
-              <div className="notification-content">
-                <p className="notification-text">
-                  <a className="sender-name" href="#">
-                    {message.senderName}
-                  </a>
-                  <span className="action">{message.action}</span>
-                  {message.post ? (
-                    <span className="post">{message.post}</span>
-                  ) : null}
-                  {message.groupName ? (
-                    <a className="group-name" href="#">
-                      {message.groupName}
-                    </a>
-                  ) : null}
-                  <NotificationOval
-                    isUnread={message.isUnread}></NotificationOval>
-                </p>
 
-                <span className="time">{message.time}</span>
+              <div className="flex-container">
+                <div className="notification-content">
+                  <p className="notification-text">
+                    <a className="sender-name" href="#">
+                      {message.senderName}
+                    </a>
+                    <span className="action">{message.action}</span>
+                    {message.post ? (
+                      <span className="post">{message.post}</span>
+                    ) : null}
+                    {message.groupName ? (
+                      <a className="group-name" href="#">
+                        {message.groupName}
+                      </a>
+                    ) : null}
+                    <NotificationOval
+                      isUnread={message.isUnread}></NotificationOval>
+                  </p>
+
+                  <span className="time">{message.time}</span>
+                </div>
+                {message.userPicture ? (
+                  <img
+                    className="user-picture"
+                    src={message.userPicture}
+                    alt="user-img"
+                  />
+                ) : null}
               </div>
             </div>
             {message.text ? (
               <p className="message-text"> {message.text} </p>
-            ) : null}
-            {message.userPicture ? (
-              <img className="user-picture" src={message.userPicture} alt="" />
             ) : null}
           </Notifications>
         );
@@ -71,6 +78,7 @@ const Notifications = styled.div`
 
   & .notifications-box {
     display: flex;
+    align-items: flex-start;
     gap: 13px;
   }
 
@@ -134,7 +142,14 @@ const Notifications = styled.div`
     margin-top: 12px;
     margin-left: 50px;
   }
+
+  & .flex-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
   & .user-picture {
+    margin-left: 10px;
   }
 `;
 
