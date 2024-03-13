@@ -20,7 +20,7 @@ export default function NotificationsList({ notifications, setNotifications }) {
               setNotifications(newNotifications); // updating the state with new array that has changed object
             }}
             key={message.id}
-            isunread={message.isUnread}>
+            isUnread={message.isUnread}>
             <div className="notifications-box">
               <img src={message.profilePic} alt="profile picture of a user" />
               <div className="notification-content">
@@ -38,6 +38,8 @@ export default function NotificationsList({ notifications, setNotifications }) {
                     </a>
                   ) : null}
                 </p>
+                <NotificationOval
+                  isUnread={message.isUnread}></NotificationOval>
                 <span className="time">{message.time}</span>
               </div>
             </div>
@@ -64,7 +66,7 @@ const NotificationContainer = styled.div`
 const Notifications = styled.div`
   padding: 16px;
   background-color: ${(props) =>
-    props.isunread ? "rgba(247, 250, 253, 1)" : ""};
+    props.isUnread ? "rgba(247, 250, 253, 1)" : ""};
 
   & .notifications-box {
     display: flex;
@@ -133,4 +135,12 @@ const Notifications = styled.div`
   }
   & .user-picture {
   }
+`;
+
+const NotificationOval = styled.div`
+  display: ${(props) => (props.isUnread ? "block" : "none")};
+  width: 8px;
+  height: 8px;
+  background: rgba(246, 85, 82, 1);
+  border-radius: 50%;
 `;

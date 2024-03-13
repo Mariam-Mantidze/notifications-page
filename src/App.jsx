@@ -11,7 +11,6 @@ function App() {
   const unreadCount = notifications.filter(
     (notification) => notification.isUnread
   ).length;
-  console.log(unreadCount);
 
   return (
     <>
