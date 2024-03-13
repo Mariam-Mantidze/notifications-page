@@ -37,9 +37,10 @@ export default function NotificationsList({ notifications, setNotifications }) {
                       {message.groupName}
                     </a>
                   ) : null}
+                  <NotificationOval
+                    isUnread={message.isUnread}></NotificationOval>
                 </p>
-                <NotificationOval
-                  isUnread={message.isUnread}></NotificationOval>
+
                 <span className="time">{message.time}</span>
               </div>
             </div>
@@ -137,8 +138,10 @@ const Notifications = styled.div`
   }
 `;
 
-const NotificationOval = styled.div`
-  display: ${(props) => (props.isUnread ? "block" : "none")};
+const NotificationOval = styled.span`
+  display: ${(props) => (props.isUnread ? "inline-block" : "none")};
+  margin-left: 6px;
+  margin-bottom: 1px;
   width: 8px;
   height: 8px;
   background: rgba(246, 85, 82, 1);

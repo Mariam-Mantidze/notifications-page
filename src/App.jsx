@@ -12,10 +12,21 @@ function App() {
     (notification) => notification.isUnread
   ).length;
 
+  const markAllasRead = () => {
+    const updatedNotifications = notifications.map((notification) => ({
+      ...notification,
+      isUnread: false,
+    }));
+    setNotifications(updatedNotifications);
+  };
+
   return (
     <>
       <Main>
-        <HeaderComponent unreadCount={unreadCount} />
+        <HeaderComponent
+          markAllasRead={markAllasRead}
+          unreadCount={unreadCount}
+        />
         <NotificationsList
           notifications={notifications}
           setNotifications={setNotifications}

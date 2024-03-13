@@ -1,19 +1,14 @@
 import styled from "styled-components";
 import React from "react";
 
-export default function HeaderComponent({ unreadCount }) {
+export default function HeaderComponent({ unreadCount, markAllasRead }) {
   return (
     <Header>
       <NotificationContainer>
         <h3>Notifications</h3>
         <span>{unreadCount}</span>
       </NotificationContainer>
-      <button
-        onClick={() => {
-          setCount(0);
-        }}>
-        Mark all as read
-      </button>
+      <button onClick={markAllasRead}>Mark all as read</button>
     </Header>
   );
 }
