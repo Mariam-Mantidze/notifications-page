@@ -69,6 +69,10 @@ const NotificationContainer = styled.div`
   flex-direction: column;
   gap: 10px;
   margin-top: 24px;
+
+  @media (min-width: 1000px) {
+    background-color: rgba(255, 255, 255, 1);
+  }
 `;
 
 const Notifications = styled.div`

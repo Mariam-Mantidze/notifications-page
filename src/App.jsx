@@ -38,6 +38,11 @@ function App() {
 
 const Main = styled.main`
   padding: 24px 16px 29px;
+  background: rgba(255, 255, 255, 1);
+
+  @media (min-width: 1000px) {
+    width: 730px;
+  }
 `;
 
 export default App;
